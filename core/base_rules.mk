@@ -107,14 +107,14 @@ endif
 # This won't catch all the cases where LOCAL_ADDITIONAL_DEPENDENCIES contains
 # a .mk file, because a few users of LOCAL_ADDITIONAL_DEPENDENCIES don't include
 # base_rules.mk, but it will fix the most common ones.
-LOCAL_ADDITIONAL_DEPENDENCIES := $(filter-out %.mk,$(LOCAL_ADDITIONAL_DEPENDENCIES))
+#LOCAL_ADDITIONAL_DEPENDENCIES := $(filter-out %.mk,$(LOCAL_ADDITIONAL_DEPENDENCIES))
 
-my_bad_deps := $(strip $(foreach dep,$(filter-out | ||,$(LOCAL_ADDITIONAL_DEPENDENCIES)),\
-                 $(if $(findstring /,$(dep)),,$(dep))))
-ifneq ($(my_bad_deps),)
-$(call pretty-warning,"Bad LOCAL_ADDITIONAL_DEPENDENCIES: $(my_bad_deps)")
-$(call pretty-error,"LOCAL_ADDITIONAL_DEPENDENCIES must only contain paths (not module names)")
-endif
+#my_bad_deps := $(strip $(foreach dep,$(filter-out | ||,$(LOCAL_ADDITIONAL_DEPENDENCIES)),\
+ #                $(if $(findstring /,$(dep)),,$(dep))))
+#ifneq ($(my_bad_deps),)
+#$(call pretty-warning,"Bad LOCAL_ADDITIONAL_DEPENDENCIES: $(my_bad_deps)")
+#$(call pretty-error,"LOCAL_ADDITIONAL_DEPENDENCIES must only contain paths (not module names)")
+#endif
 
 ###########################################################
 ## Validate and define fallbacks for input LOCAL_* variables.
